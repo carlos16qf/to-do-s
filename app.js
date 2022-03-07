@@ -1,13 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 const { dataBase } = require('./utils/database');
 
 const { todoRouter } = require('./routers/todo.router');
 
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 
-app.use('/app/v1/todo', todoRouter);
+app.use('/api/v1/todo', todoRouter);
 
 dataBase
   .authenticate()
